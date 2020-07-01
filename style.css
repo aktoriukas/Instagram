@@ -1,22 +1,52 @@
 *{
-    background-color: rgb(109, 103, 103);
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
     max-width: 100%;
     
 }
+body{
+    background-color: rgb(109, 103, 103);
+}
 .title{
     height: 40px;
     line-height: 40px;
     text-align: center;
     color: white;
+    z-index: -1;
 }
+/* LIKE butoon 
+    @make like button invisible
+*/
+
+.like_button{
+    position: absolute;
+    z-index: 2;
+    right: 17px;
+    bottom: 25px;
+    background: transparent;
+    outline: none;
+    border: none;
+    transition: 0.2s;
+    visibility: hidden;
+}
+.like_button:hover{
+    opacity: 0.8;
+    background-color: grey;
+    border-radius: 6px;
+    box-shadow: 0 4px #999;
+}
+.like_button:active{
+    box-shadow: 0 1px #999;
+    transform: translateY(2px)
+}
+
+
 img{
     width:300px;
     transition: 0.5s;
     border-radius: 5px;
-    border: 2px solid #ddd;
+    border: 6px solid rgb(126, 116, 116);
     border-radius: 4px;
     padding: 5px;
 }
@@ -29,4 +59,5 @@ img{
 .column{
     flex: 33.33%;
     padding: 10px;
+    position: relative;
 }
