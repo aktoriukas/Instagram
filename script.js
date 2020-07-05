@@ -85,7 +85,7 @@
         console.log("this window bigger than 1000px");
         id.style.width='550px';
       }else{
-        id.style.width='1200px';
+        id.style.width='1300px';
 
       }
     //    id.style.width='550px';
