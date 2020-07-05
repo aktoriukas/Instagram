@@ -2,7 +2,6 @@
 {
     let html, newHtml;
 
-    //html = '<div class="row"><div class="pic_%nr%"><div class="column"><img id=%nr% src="photo/%nr%.jpg"></div></div><div class="pic_%nr2%"><div class="column"><img id=%nr2% src="photo/%nr2%.jpg"></div></div><div class="pic_%nr3%"><div class="column"><img id=%nr3% src="photo/%nr3%.jpg"></div></div></div>'
     html = '<div class="images"><div class="row"><div class="pic_%nr%"><div class="column"><img id="%nr%" src="photo/%nr%.jpg"><button id="button%nr%" class="like_button" type="button"><img class="like_logo" src="images/like.png"></button></div></div><div class="pic_%nr2%"><div class="column"><img id="%nr2%" src="photo/%nr2%.jpg"><button id="button%nr2%" class="like_button" type="button"><img class="like_logo" src="images/like.png"></button></div></div><div class="pic_%nr3%"><div class="column"><img id="%nr3%" src="photo/%nr3%.jpg"><button id="button%nr3%" class="like_button" type="button"><img class="like_logo" src="images/like.png"></button></div></div></div>'
 
     for(let i = 1; i < 90; i+=3){
@@ -82,7 +81,14 @@
        return isAlreadyPressed = ar.includes(id);
    }
    function expandImage(id){
-       id.style.width='550px';
+    if (window.matchMedia('(min-width: 1000px)').matches) {
+        console.log("this window bigger than 1000px");
+        id.style.width='550px';
+      }else{
+        id.style.width='1200px';
+
+      }
+    //    id.style.width='550px';
        id.style.border='6px solid rgb(125, 125, 125)';
 
    }

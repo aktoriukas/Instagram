@@ -46,7 +46,6 @@ body{
     transition: 0s;
 }
 
-
 img{
     width:300px;
     transition: 0.5s;
@@ -67,3 +66,12 @@ img{
     padding: 10px;
     position: relative;
 }
+
+/* @media (max-width: 950px){
+    .column {
+        flex: 50%;
+    }
+    body {
+        background-color: azure;
+    }
+} */
