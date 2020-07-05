@@ -67,11 +67,8 @@ img{
     position: relative;
 }
 
-/* @media (max-width: 950px){
-    .column {
-        flex: 50%;
+@media (max-width: 1000px){
+    .like_logo{
+        width: 50px;
     }
-    body {
-        background-color: azure;
-    }
-} */
+}
