@@ -27,7 +27,6 @@ body{
     border: none;
     transition: 0.2s;
     visibility: hidden;
-    display: flex;
 }
 .like_button:hover{
     opacity: 0.8;
@@ -69,6 +68,9 @@ img{
 
 @media (max-width: 1000px){
     .like_logo{
-        width: 50px;
+        width: 60px;
     }
+}
+.like_logo + div {
+    font-size: 10px;
 }
