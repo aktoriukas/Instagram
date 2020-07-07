@@ -145,7 +145,6 @@
 
         let likeCount;
 
-
         if(buttonID.length == 7){
             imageObjNr = buttonID.slice(-1);
         }else{
