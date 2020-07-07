@@ -2,7 +2,7 @@
 {
     let html, newHtml;
 
-    html = '<div class="images"><div class="row"><div class="pic_%nr%"><div class="column"><img id="%nr%" src="photo/%nr%.jpg"><button id="button%nr%" class="like_button" type="button"><img class="like_logo" src="images/like.png"></button></div></div><div class="pic_%nr2%"><div class="column"><img id="%nr2%" src="photo/%nr2%.jpg"><button id="button%nr2%" class="like_button" type="button"><img class="like_logo" src="images/like.png"></button></div></div><div class="pic_%nr3%"><div class="column"><img id="%nr3%" src="photo/%nr3%.jpg"><button id="button%nr3%" class="like_button" type="button"><img class="like_logo" src="images/like.png"></button></div></div></div>'
+    html = '<div class="images"><div class="row"><div class="pic_%nr%"><div class="column"><img id="%nr%" src="photo/%nr%.jpg"><button id="button%nr%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div></div></button></div></div><div class="pic_%nr2%"><div class="column"><img id="%nr2%" src="photo/%nr2%.jpg"><button id="button%nr2%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div></div></button></div></div><div class="pic_%nr3%"><div class="column"><img id="%nr3%" src="photo/%nr3%.jpg"><button id="button%nr3%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div></div></button></div></div></div>'
 
     for(let i = 1; i < 90; i+=3){
 
@@ -20,11 +20,7 @@
         newHtml = newHtml.replace('%nr3%', i+2);
         newHtml = newHtml.replace('%nr3%', i+2);
         newHtml = newHtml.replace('%nr3%', i+2);
-
-
-        
-        var test = document.querySelector('.title');
-        
+                
         document.querySelector('.images').insertAdjacentHTML('beforeend', newHtml);
     }
 
@@ -82,13 +78,16 @@
    }
    function expandImage(id){
     if (window.matchMedia('(min-width: 1000px)').matches) {
-        console.log("this window bigger than 1000px");
+
+        // Computer screen
         id.style.width='550px';
+
       }else{
+
+          // Phone screen
         id.style.width='1300px';
 
       }
-    //    id.style.width='550px';
        id.style.border='6px solid rgb(125, 125, 125)';
 
    }
@@ -102,11 +101,32 @@
 // LIKE BUTTON
 {
     function likeImage(buttonID){
-        console.log(`working id is ${buttonID}`);
+
+        let logoID, disableButton
+
         addLike(buttonID);
+
+        // 1. Get child element of button (Like_logo) 
+
+        logoID = document.getElementById(buttonID).children;
+
+        // 2. Make Like_logo pressed (red)
+
+        logoID[0].src = "images/liked.png";
+        
+        // 3. Make button "pressed"
+
+        disableButton = document.getElementById(buttonID);
+        disableButton.disabled = true;
+        
     }
     function addLike(buttonID){
-        //TODO
+
+        let likeCount, value;
+
+        likeCount = document.getElementById(buttonID).children;
+    
+        likeCount[1].innerHTML = 1;
     }
 }
 
