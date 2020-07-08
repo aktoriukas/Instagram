@@ -47,7 +47,7 @@ body{
 }
 
 img{
-    width:300px;
+    width:400px;
     transition: 0.5s;
     border-radius: 5px;
     border: 6px solid rgb(126, 116, 116);
@@ -55,14 +55,15 @@ img{
     padding: 5px;
 }
 
-.row{
+.images{
     display: flex;
+    flex-wrap: wrap;
     margin-left: auto;
     margin-right: auto;
     transform-style: preserve-3d;
+    transition: 1s;
 }
 .column{
-    flex: 33.33%;
     padding: 10px;
     position: relative;
 }
