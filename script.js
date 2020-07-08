@@ -13,7 +13,6 @@ imageObj = makeImageObj(90);
 {
     let html, newHtml;
 
-    //html = '<div class="images"><div class="row"><div class="pic_%nr%"><div class="column"><img id="%nr%" src="photo/%nr%.jpg"><button id="button%nr%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div></div></button></div></div><div class="pic_%nr2%"><div class="column"><img id="%nr2%" src="photo/%nr2%.jpg"><button id="button%nr2%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div></div></button></div></div><div class="pic_%nr3%"><div class="column"><img id="%nr3%" src="photo/%nr3%.jpg"><button id="button%nr3%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div></div></button></div></div></div>'
     html =  '<div class="pic_%nr%"><div class="column"><img class="img" id="%nr%" src="photo/%nr%.jpg"><button id="button%nr%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div></div></button></div></div>'
 
     // Hard coded number on images (to change)
@@ -38,7 +37,7 @@ imageObj = makeImageObj(90);
 
     function selectImage(event) {
 
-        let picID, pictureID, buttonID, buttonIDLike;
+        let picID, buttonID, buttonIDLike, eventID;
 
         picID = document.getElementById(event.target.id);
 
@@ -58,34 +57,36 @@ imageObj = makeImageObj(90);
             });
 
 
-            //Check if it's been already pressed
+            eventID = event.target.id;
 
-            if (itItAlreadyPressed(pressed, event.target.id)){
-
-                pictureID = pressed.findIndex(cur => cur == event.target.id);
-                delete pressed[pictureID];
-                shrinkImage(picID);
-                buttonID.style.visibility='hidden';
-
-
+            //Check if expand == true
+            if(isEven(eventID)){
+                if (imageObj[eventID].expand == false){
+                    expandImage(picID);
+                    imageObj[eventID].expand = true;
+                }else{
+                    shrinkImage(picID);
+                    buttonID.style.visibility='hidden';
+                    imageObj[eventID].expand = false;
+                    }
+    
+                } 
             }else{
-                pressed.push(event.target.id);
-                expandImage(picID);
 
-            }        
+            }      
         };
     };
-    
-   function itItAlreadyPressed(ar, id){
-       let isAlreadyPressed;
-       return isAlreadyPressed = ar.includes(id);
-   }
 
+    function isEven(n) {
+        return n % 2 == 0;
+    }
+     
+    
    function expandImage(id){
     if (window.matchMedia('(min-width: 1000px)').matches) {
 
         // Computer screen
-        id.style.width='550px';
+        id.style.width='600px';
 
       }else{
 
@@ -97,7 +98,7 @@ imageObj = makeImageObj(90);
 
    }
    function shrinkImage(id){
-        id.style.width='300px';
+        id.style.width='400px';
         id.style.border='6px solid rgb(126, 116, 116)';
 
     }
@@ -114,13 +115,10 @@ imageObj = makeImageObj(90);
         }
     }
    
-}
+
 
 // LIKE BUTTON
 {
-    function setExpand(){
-        console.log('working');
-    }
 
     function likeImage(buttonID){
 
