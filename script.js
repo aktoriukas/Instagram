@@ -6,9 +6,15 @@ class Instagram_image {
         this.expand = expand,
         this.visibleLike = false
     }
+    lisenForLike(){
+        console.log(`working ${this.nr}`);
+    }
 }
 const nrOFimages = 90;
 imageObj = makeImageObj(nrOFimages);
+for (let i = 0; i < nrOFimages ; i++){
+    console.log(i);
+}
 
 // DISPLAY PICTURES
 {
@@ -119,9 +125,6 @@ imageObj = makeImageObj(nrOFimages);
             checkIfDisplayLikeButton();
 
         }
-        else {
-            console.log(event.target);
-        }
     };
     function checkIfDisplayLikeButton(){
         let i;
@@ -159,22 +162,20 @@ imageObj = makeImageObj(nrOFimages);
     
    function expandImage(id){
     if (window.matchMedia('(min-width: 1000px)').matches) {
-
         // Computer screen
         id.style.width='600px';
 
       }else{
-
           // Phone screen
-        id.style.width='1300px';
+        id.style.width='600px';
 
       }
-       id.style.border='6px solid rgb(125, 125, 125)';
+    //    id.style.border='6px solid rgb(125, 125, 125)';
 
    }
    function shrinkImage(id){
         id.style.width='400px';
-        id.style.border='6px solid rgb(126, 116, 116)';
+        // id.style.border='6px solid rgb(126, 116, 116)';
 
     }
     function expandEverySecondImage(){
