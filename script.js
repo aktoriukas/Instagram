@@ -16,7 +16,7 @@ for (let i = 0; i < nrOFimages ; i++){
     console.log(i);
 }
 
-// DISPLAY PICTURES
+// DISPLAY PICTURES 
 {
     let html, newHtml;
 
