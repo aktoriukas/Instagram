@@ -7,14 +7,15 @@ class Instagram_image {
         this.visibleLike = false
     }
     lisenForLike(){
-        console.log(`working ${this.nr}`);
+        let buttonID;
+        buttonID = 'button' + this.nr;
+        document.getElementById(buttonID).addEventListener('click',function(){likeImage(buttonID);
+        });
     }
 }
 const nrOFimages = 90;
 imageObj = makeImageObj(nrOFimages);
-for (let i = 0; i < nrOFimages ; i++){
-    console.log(i);
-}
+
 
 // DISPLAY PICTURES 
 {
@@ -45,7 +46,7 @@ for (let i = 0; i < nrOFimages ; i++){
 
     function selectImage(event) {
 
-        let picElement, picElementChange, likeButtonElement, likeButtonID, eventID;
+        let picElement, picElementChange, eventID;
 
 
         // Check if pressed on picture
@@ -200,7 +201,7 @@ for (let i = 0; i < nrOFimages ; i++){
 
     function likeImage(buttonID){
 
-        let logoID, disableButton, imageObj, imageObjNr;
+        let logoID, disableButton;
 
         addLike(buttonID);
 
@@ -238,7 +239,10 @@ for (let i = 0; i < nrOFimages ; i++){
 
 
     }
-
+    for (let i = 1; i < nrOFimages ; i++){
+        imageObj[i].lisenForLike();
+    }
+    
 
 }
 
@@ -254,3 +258,4 @@ function makeImageObj(n) {
     }
     return instagramImage;
 }
+
