@@ -69,6 +69,12 @@ img{
     .like_logo{
         width: 60px;
     }
+    .images{
+        flex-direction: column;
+        align-items: center;
+
+
+    }
 }
 .like_logo + div {
     font-size: 15px;

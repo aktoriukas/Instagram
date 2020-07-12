@@ -54,19 +54,6 @@ imageObj = makeImageObj(nrOFimages);
             picElement = document.getElementById(event.target.id);
 
 
-            // Make like button visible
-
-            // likeButtonID = 'button' + event.target.id;
-            // likeButtonElement = document.getElementById(likeButtonID);
-            // likeButtonElement.style.visibility='visible';
-
-            // // Add event listener to like button
-
-            // likeButtonElement.addEventListener('click' ,function(){
-            //     likeImage(likeButtonID);
-            // });
-
-
             eventID = event.target.id;
             eventID = parseInt(eventID);
 
@@ -134,10 +121,6 @@ imageObj = makeImageObj(nrOFimages);
             if(imageObj[i].visibleLike == true){
                 displayLikeButton(i);
 
-            // likeButtonElement.addEventListener('click' ,function(){
-            //     likeImage(likeButtonID);
-            // });
-
             }
             else if(imageObj[i].visibleLike == false){
                 hideLikeButton(i);
@@ -171,12 +154,10 @@ imageObj = makeImageObj(nrOFimages);
         id.style.width='600px';
 
       }
-    //    id.style.border='6px solid rgb(125, 125, 125)';
 
    }
    function shrinkImage(id){
         id.style.width='400px';
-        // id.style.border='6px solid rgb(126, 116, 116)';
 
     }
     function expandEverySecondImage(){
