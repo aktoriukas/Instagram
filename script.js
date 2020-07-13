@@ -229,7 +229,12 @@ imageObj = makeImageObj(nrOFimages);
 
 // FLIP IMAGE TO SEE COMMENTS
 {
+    function flipTheImage(){
+        let commentHtml;
 
+        commentHtml = '<div class="comments"> vienas komentaras <br> kitas komentaras</div>';
+        document.querySelector('.column').innerHTML =commentHtml;
+    }
 }
 function makeImageObj(n) {
     let instagramImage = {};
@@ -239,4 +244,3 @@ function makeImageObj(n) {
     }
     return instagramImage;
 }
-

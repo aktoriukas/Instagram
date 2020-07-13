@@ -10,6 +10,25 @@ body{
     color: white;
     z-index: -1;
 }
+/* Flip button */
+.flip_button{
+    position: absolute;
+    z-index: 2;
+    right: 17px;
+    top: 17px;
+    outline: none;
+    border: none;
+    background: transparent;
+    transition: 0.2s;
+    opacity: 0.7;
+}
+.flip_logo{
+    border: none;
+    padding: 0px;
+    width: 20px;
+    transition: 0s;
+    padding: 3px;
+}
 /* LIKE butoon */ 
 
 .like_button{
@@ -19,18 +38,20 @@ body{
     bottom: 25px;
     background: transparent;
     outline: none;
+    padding: 5px;
     border: none;
     transition: 0.2s;
     opacity: 0.7;
     visibility: hidden;
 }
-.like_button:hover{
+.like_button:hover, .flip_button:hover{
     opacity: 0.8;
     background-color: grey;
+    opacity: 0.3;
     border-radius: 6px;
     box-shadow: 0 4px #999;
 }
-.like_button:active{
+.like_button:active, .flip_button:active{
     box-shadow: 0 1px #999;
     transform: translateY(2px)
 }
@@ -72,10 +93,15 @@ img{
     .images{
         flex-direction: column;
         align-items: center;
-
-
     }
 }
 .like_logo + div {
     font-size: 15px;
 }
+.comments{
+    width: 600px;
+    border: 3px solid #73AD21;
+    text-align: center;
+}
+
+/* TEST */
