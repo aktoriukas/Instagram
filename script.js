@@ -4,7 +4,8 @@ class Instagram_image {
         this.nr = nr,
         this.likes = likes;
         this.expand = expand,
-        this.visibleLike = false
+        this.visibleLike = false,
+        this.comments = []
     }
     lisenForLike(){
         let buttonID;
@@ -240,7 +241,7 @@ function makeImageObj(n) {
     let instagramImage = {};
 
     for (let i = 1; i <= n; i++) {
-        instagramImage[i] = new Instagram_image(i, 0, false)
+        instagramImage[i] = new Instagram_image(i, 0, false);
     }
     return instagramImage;
 }
