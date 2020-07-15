@@ -2,9 +2,10 @@
 
 ## JavaScript, HTML and CSS based application.
 
-* Aplication for photos
+* Aplication to display your photos
 
     * Display photos in organized website
+    * Expand / Shrink function
     * Like button
 
 

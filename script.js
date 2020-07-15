@@ -1,10 +1,11 @@
 
 class Instagram_image {
-    constructor(nr, likes, expand, visibleLike) {
+    constructor(nr, likes, expand) {
         this.nr = nr,
         this.likes = likes;
         this.expand = expand,
         this.visibleLike = false,
+        this.visibleCommentButton = false,
         this.comments = []
     }
     lisenForLike(){
@@ -13,7 +14,13 @@ class Instagram_image {
         document.getElementById(buttonID).addEventListener('click',function(){likeImage(buttonID);
         });
     }
-}
+    lisenForFlipButton(){
+        let flipID;
+        flipID = 'flipbutton' + this.nr;
+        document.getElementById(flipID).addEventListener('click',function(){displayComments(flipID);
+        });
+    };
+};
 const nrOFimages = 90;
 imageObj = makeImageObj(nrOFimages);
 
@@ -22,12 +29,14 @@ imageObj = makeImageObj(nrOFimages);
 {
     let html, newHtml;
 
-    html =  '<div class="pic_%nr%"><div class="column"><img class="img" id="%nr%" src="photo/%nr%.jpg"><button id="button%nr%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div></div></button></div></div>'
+    // html =  '<div class="pic_%nr%"><div class="column"><img class="img" id="%nr%" src="photo/%nr%.jpg"><button id="button%nr%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div></div></button></div></div>'
+    html =  '<div class="images"><div class="pic_%nr%"><div class="column"> <img class="img" id="%nr%" src="photo/%nr%.jpg"><button id="button%nr%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div>2</div></button><button id="flipbutton%nr%" class="flip_button" type="button""><img class="flip_logo" src="images/arrow.png"></button></div></div></div></div>'
 
     // Hard coded number on images (to change)
     for(i = 1; i <= nrOFimages; i++){
 
         newHtml = html.replace('%nr%', i);
+        newHtml = newHtml.replace('%nr%', i);
         newHtml = newHtml.replace('%nr%', i);
         newHtml = newHtml.replace('%nr%', i);
         newHtml = newHtml.replace('%nr%', i);
@@ -64,6 +73,8 @@ imageObj = makeImageObj(nrOFimages);
                 shrinkImage(picElement);
                 imageObj[eventID].expand=false;
                 imageObj[eventID].visibleLike=false;
+                imageObj[eventID].visibleLike=false;
+
                 
                 picElementChange = document.getElementById(eventID -1);
 
@@ -119,12 +130,12 @@ imageObj = makeImageObj(nrOFimages);
         let i;
 
         for(i=1; i < nrOFimages; i++){
-            if(imageObj[i].visibleLike == true){
-                displayLikeButton(i);
+            if(imageObj[i].expand == true){
+                displayButtons(i);
 
             }
-            else if(imageObj[i].visibleLike == false){
-                hideLikeButton(i);
+            else if(imageObj[i].expand == false){
+                hideButtons(i);
             }
         }
     }
@@ -132,15 +143,33 @@ imageObj = makeImageObj(nrOFimages);
     function isEven(n) {
         return n % 2 == 0;
     }
-    function hideLikeButton(i){
+
+    function hideButtons(i){
+        let likeButtonID, flipButtonID, likeButtonElement, flipButtonElement;
+
+        // Hide like button
         likeButtonID = 'button' + i;
         likeButtonElement = document.getElementById(likeButtonID);
         likeButtonElement.style.visibility='hidden';
+
+        // Hide flip button
+        flipButtonID = 'flipbutton' + i;
+        flipButtonElement = document.getElementById(flipButtonID);
+        flipButtonElement.style.visibility='hidden';
     }
-    function displayLikeButton(i){
+
+    function displayButtons(i){
+        let likeButtonID, flipButtonID, likeButtonElement, flipButtonElement;
+
+        // Display like button
         likeButtonID = 'button' + i;
         likeButtonElement = document.getElementById(likeButtonID);
         likeButtonElement.style.visibility='visible';
+
+        // Display flip button
+        flipButtonID = 'flipbutton' + i;
+        flipButtonElement = document.getElementById(flipButtonID);
+        flipButtonElement.style.visibility='visible';
         }
     }
      
@@ -223,6 +252,7 @@ imageObj = makeImageObj(nrOFimages);
     }
     for (let i = 1; i < nrOFimages ; i++){
         imageObj[i].lisenForLike();
+        imageObj[i].lisenForFlipButton();
     }
     
 
@@ -230,13 +260,28 @@ imageObj = makeImageObj(nrOFimages);
 
 // FLIP IMAGE TO SEE COMMENTS
 {
-    function flipTheImage(){
-        let commentHtml;
+    function displayComments(buttonID){
+        let commentHtml, commentElement, pixel, id;
+        console.log('veikia');
 
-        commentHtml = '<div class="comments"> vienas komentaras <br> kitas komentaras</div>';
-        document.querySelector('.column').innerHTML =commentHtml;
-    }
+
+    //     commentElement = document.querySelector('.column');
+    //     commentHtml = '<div class="comments"> vienas komentaras <br> kitas komentaras</div>';
+    //     commentElement.innerHTML =commentHtml;
+    //     pixel = 500;
+    //     id = setInterval(frame, 5);
+    //     function frame() {
+    //         if (pixel == 600){
+    //             clearInterval(id);
+    //         } else {
+    //             pixel++; 
+    //             commentElement.style.width=`${pixel}px`; 
+    //             console.log('veikia');
+    //           }
+    //     }
+ }
 }
+
 function makeImageObj(n) {
     let instagramImage = {};
 
