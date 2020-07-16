@@ -5,7 +5,7 @@ class Instagram_image {
         this.likes = likes;
         this.expand = expand,
         this.visibleLike = false,
-        this.visibleCommentButton = false,
+        this.visibleComments = false,
         this.comments = []
     }
     lisenForLike(){
@@ -15,14 +15,19 @@ class Instagram_image {
         });
     }
     lisenForFlipButton(){
-        let flipID;
+        let flipID, objNumber;
+
+        objNumber = this.nr;
+
         flipID = 'flipbutton' + this.nr;
-        document.getElementById(flipID).addEventListener('click',function(){displayComments(flipID);
+        document.getElementById(flipID).addEventListener('click',function(){displayComments(objNumber);
         });
-    };
+    }
+    
 };
 const nrOFimages = 90;
-imageObj = makeImageObj(nrOFimages);
+
+const imageObj = makeImageObj(nrOFimages);
 
 
 // DISPLAY PICTURES 
@@ -250,37 +255,55 @@ imageObj = makeImageObj(nrOFimages);
 
 
     }
-    for (let i = 1; i < nrOFimages ; i++){
-        imageObj[i].lisenForLike();
-        imageObj[i].lisenForFlipButton();
-    }
     
 
 }
 
 // FLIP IMAGE TO SEE COMMENTS
 {
-    function displayComments(buttonID){
-        let commentHtml, commentElement, pixel, id;
-        console.log('veikia');
+    function displayComments(objNumber){
+        let imageElement;
 
+        if (imageObj[objNumber].visibleComments == false){
 
-    //     commentElement = document.querySelector('.column');
-    //     commentHtml = '<div class="comments"> vienas komentaras <br> kitas komentaras</div>';
-    //     commentElement.innerHTML =commentHtml;
-    //     pixel = 500;
-    //     id = setInterval(frame, 5);
-    //     function frame() {
-    //         if (pixel == 600){
-    //             clearInterval(id);
-    //         } else {
-    //             pixel++; 
-    //             commentElement.style.width=`${pixel}px`; 
-    //             console.log('veikia');
-    //           }
-    //     }
- }
+            dimImage(objNumber);
+            showComments(objNumber);
+        }
+        else if (imageObj[objNumber].visibleComments == true) {
+
+            brightenImage(objNumber);
+        }
+    }
+    function showComments(objNumber){
+        let html, newhtml;
+
+        html = '<div class="comments_box" id="comment_box_%nr%"><div class="comment">pirmas komentaras</div><div class="comment">antras labai labai labai labai labail labail ilgas komentaras</div></div>'
+        
+        newhtml = html.replace('%nr%', objNumber);
+
+        document.querySelector('.pic_'+objNumber).innerHTML += newhtml;
+    }
+
+    function dimImage(objNumber){
+        imageElement = document.getElementById(objNumber);
+        imageElement.style.opacity='0.2';
+        imageObj[objNumber].visibleComments = true;
+
+    }
+
+    function brightenImage(objNumber){
+        imageElement = document.getElementById(objNumber);
+        imageElement.style.opacity='1';
+        imageObj[objNumber].visibleComments = false;
+    }
 }
+// Lisen for changes
+
+for (let i = 1; i < nrOFimages ; i++){
+    imageObj[i].lisenForLike();
+    imageObj[i].lisenForFlipButton();
+}
+
 
 function makeImageObj(n) {
     let instagramImage = {};

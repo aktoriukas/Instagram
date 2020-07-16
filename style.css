@@ -102,13 +102,20 @@ img{
 .like_logo + div {
     font-size: 15px;
 }
-.comments{
-    /* width: 600px; */
-    height: 400px;
-    text-align: center;
-    border: 6px solid rgb(86, 77, 77);
-    border-radius: 5px;
-
-}
 
 /* TEST */
+
+.comments_box {
+    position: absolute;
+    z-index: 3;
+    top: 5%;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+.comment{
+    left: 20%;
+    position: relative;
+    border: 5px red;
+}
