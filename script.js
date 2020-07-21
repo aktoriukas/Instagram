@@ -29,18 +29,18 @@ const nrOFimages = 90;
 
 const imageObj = makeImageObj(nrOFimages);
 
-
 // DISPLAY PICTURES 
 {
     let html, newHtml;
 
-    // html =  '<div class="pic_%nr%"><div class="column"><img class="img" id="%nr%" src="photo/%nr%.jpg"><button id="button%nr%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div></div></button></div></div>'
+    // html =  '<div class="pic_%nr%"><div class="column"><div class="comments_box" id="comment_box_%nr%"></div><img class="img" id="%nr%" src="photo/%nr%.jpg"><button id="button%nr%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div></div></button></div></div>'
     html =  '<div class="images"><div class="pic_%nr%"><div class="column"> <img class="img" id="%nr%" src="photo/%nr%.jpg"><button id="button%nr%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div>2</div></button><button id="flipbutton%nr%" class="flip_button" type="button""><img class="flip_logo" src="images/arrow.png"></button></div></div></div></div>'
 
     // Hard coded number on images (to change)
     for(i = 1; i <= nrOFimages; i++){
 
         newHtml = html.replace('%nr%', i);
+        newHtml = newHtml.replace('%nr%', i);
         newHtml = newHtml.replace('%nr%', i);
         newHtml = newHtml.replace('%nr%', i);
         newHtml = newHtml.replace('%nr%', i);
@@ -217,6 +217,7 @@ const imageObj = makeImageObj(nrOFimages);
 
     function likeImage(buttonID){
 
+
         let logoID, disableButton;
 
         addLike(buttonID);
@@ -267,13 +268,25 @@ const imageObj = makeImageObj(nrOFimages);
         if (imageObj[objNumber].visibleComments == false){
 
             dimImage(objNumber);
-            showComments(objNumber);
+            showComments(objNumber);  
+            imageObj[objNumber].lisenForFlipButton();          
         }
-        else if (imageObj[objNumber].visibleComments == true) {
-
+        else {
             brightenImage(objNumber);
         }
     }
+    function dimImage(objNumber){
+        imageElement = document.getElementById(objNumber);
+        imageElement.style.opacity='0.2';
+        imageObj[objNumber].visibleComments = true;
+    }
+
+    function brightenImage(objNumber){
+        imageElement = document.getElementById(objNumber);
+        imageElement.style.opacity='1';
+        imageObj[objNumber].visibleComments = false;
+    }
+        
     function showComments(objNumber){
         let html, newhtml;
 
@@ -284,26 +297,15 @@ const imageObj = makeImageObj(nrOFimages);
         document.querySelector('.pic_'+objNumber).innerHTML += newhtml;
     }
 
-    function dimImage(objNumber){
-        imageElement = document.getElementById(objNumber);
-        imageElement.style.opacity='0.2';
-        imageObj[objNumber].visibleComments = true;
-
-    }
-
-    function brightenImage(objNumber){
-        imageElement = document.getElementById(objNumber);
-        imageElement.style.opacity='1';
-        imageObj[objNumber].visibleComments = false;
-    }
 }
 // Lisen for changes
 
-for (let i = 1; i < nrOFimages ; i++){
-    imageObj[i].lisenForLike();
-    imageObj[i].lisenForFlipButton();
+function lisenForEvents(){
+    for (let i = 1; i < nrOFimages ; i++){
+        imageObj[i].lisenForLike();
+        imageObj[i].lisenForFlipButton();
+    }
 }
-
 
 function makeImageObj(n) {
     let instagramImage = {};
@@ -313,3 +315,5 @@ function makeImageObj(n) {
     }
     return instagramImage;
 }
+lisenForEvents();
+
