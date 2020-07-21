@@ -107,7 +107,10 @@ img{
 
 .comments_box {
     position: absolute;
-    z-index: 3;
+    z-index: 1;
+    width: 100%;
+    margin: auto;
+    padding: 10px;
     top: 5%;
     justify-content: center;
     display: flex;
@@ -116,6 +119,9 @@ img{
 }
 .comment{
     left: 20%;
-    position: relative;
+    width: 100%;
+    overflow: scroll;
+    z-index: 4;
+    position: static;
     border: 5px red;
 }

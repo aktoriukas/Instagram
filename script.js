@@ -34,12 +34,13 @@ const imageObj = makeImageObj(nrOFimages);
     let html, newHtml;
 
     // html =  '<div class="pic_%nr%"><div class="column"><div class="comments_box" id="comment_box_%nr%"></div><img class="img" id="%nr%" src="photo/%nr%.jpg"><button id="button%nr%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div></div></button></div></div>'
-    html =  '<div class="images"><div class="pic_%nr%"><div class="column"> <img class="img" id="%nr%" src="photo/%nr%.jpg"><button id="button%nr%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div>2</div></button><button id="flipbutton%nr%" class="flip_button" type="button""><img class="flip_logo" src="images/arrow.png"></button></div></div></div></div>'
+    html =  '<div class="images"><div class="pic_%nr%"><div class="column"> <img class="img" id="%nr%" src="photo/%nr%.jpg"><button id="button%nr%" class="like_button" type="button"><img class="like_logo" src="images/like.png">&nbsp;<div>2</div></button><button id="flipbutton%nr%" class="flip_button" type="button""><img class="flip_logo" src="images/arrow.png"></button></div></div><div class="comments_box" id="comment_box_%nr%"><div class="comment">pirmas komentaras</div><div class="comment">antras labai labai labai labai labail labail ilgas komentaras</div></div></div></div>'
 
     // Hard coded number on images (to change)
     for(i = 1; i <= nrOFimages; i++){
 
         newHtml = html.replace('%nr%', i);
+        newHtml = newHtml.replace('%nr%', i);
         newHtml = newHtml.replace('%nr%', i);
         newHtml = newHtml.replace('%nr%', i);
         newHtml = newHtml.replace('%nr%', i);
@@ -268,7 +269,7 @@ const imageObj = makeImageObj(nrOFimages);
         if (imageObj[objNumber].visibleComments == false){
 
             dimImage(objNumber);
-            showComments(objNumber);  
+            // showComments(objNumber);  
             imageObj[objNumber].lisenForFlipButton();          
         }
         else {
